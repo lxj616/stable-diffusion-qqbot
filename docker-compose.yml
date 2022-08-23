@@ -1,0 +1,42 @@
+version: "3"
+services:
+  nonebot:
+    build: .
+    container_name: stable_diffusion_bot
+    restart: always
+    ports:
+      - "127.0.0.1:9292:9292" # 映射端口到宿主机 宿主机端口:容器端口
+    entrypoint: /workdir/run.sh
+    working_dir: /workdir
+    volumes:
+      - .:/workdir
+  redis:
+    image: redis
+    container_name: redis_sd
+    restart: always
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - ./redis_conf:/usr/local/etc/redis
+    entrypoint: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+  sd:
+    image: lxj616/stable-diffusion-docker-service
+    container_name: sdds
+    restart: always
+    volumes:
+      - /root/dev/dev_new/stable-diffusion-docker-service/txt2img_serve.py:/workdir/stable-diffusion/txt2img_serve.py
+      - /root/dev/dev_new/stable-diffusion/models/ldm/stable-diffusion-v1:/workdir/stable-diffusion/models/ldm/stable-diffusion-v1
+    env_file:
+      - .env
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]    
+  cqhttp:
+    image: ghcr.io/mrs4s/go-cqhttp:master
+    container_name: cqhttp
+    restart: always
+    volumes:
+      - ./cqhttp:/data
+      - .:/workdir
