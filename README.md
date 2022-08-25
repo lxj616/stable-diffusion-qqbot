@@ -29,6 +29,14 @@
 
 QQ机器人中目前没有开放自定义参数功能，因为性能实在不够用
 
+## bot测试QQ群
+
+暗号是：老铁没毛病
+
+![004.jpg](assets/qrcode_1661325644106__01.jpg)
+
+免费分享不易，GPU资源有限，限时分享开放一阵子
+
 ## 安全 & 合规
 
 stable-diffusion-docker-service内置使用了CompVis/stable-diffusion-safety-checker进行内容安全控制，请放心使用，如果出现疑似违规图片，会自动替换成rick的照片，如果看到以下这个照片，说明内容疑似违规了，误伤概率有点大，但还是严格一点儿比较放心
