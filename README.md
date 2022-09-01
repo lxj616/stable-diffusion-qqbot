@@ -15,6 +15,20 @@
 4. 修改`.env`，`.env.dev`，如果修改了redis密码，还要修改`redis_conf`下的配置，如果没有使用代理服务器，就无法使用google翻译，但不会影响英文功能
 5. `docker-compose up`
 
+一个示例的`.env`文件如下（由于gitignore设置，不可以上传.env文件）
+```
+ENVIRONMENT=dev
+REDIS_HOST_ADDRESS=redis
+REDIS_HOST_PORT=6379
+REDIS_DB_NUMBER=0
+REDIS_PASSWORD=ThisIsAExamplePasswordInTheDemoConfigPleaseChangeItBeforeUseHoHoHo
+REDIS_JOB_QUEUE_NAME=queue:txt2img_job
+REDIS_RESULT_QUEUE_NAME=queue:txt2img_result
+REDIS_ERROR_QUEUE_NAME=queue:txt2img_error
+IMAGE_SAVE_PATH=/workdir/images
+PROXY_ADDR=socks5://你的代理IP:1080
+```
+
 ## 如何使用
 
 目前支持2个命令，
