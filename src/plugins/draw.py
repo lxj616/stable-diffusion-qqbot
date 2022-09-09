@@ -52,6 +52,8 @@ def background_consumer(r, image_save_path, redis_result_queue_name):
                 img_tmp = Image.open(BytesIO(img_bytes[1]))
                 job_dict = json.loads(img_tmp.text["job_dict_json:"])
                 user_id = job_dict['user_id']
+                if len(job_dict['txt_str']) > 64:
+                    job_dict['txt_str'] = job_dict['txt_str'][:64]
                 filename = str(user_id) + '_' + re.sub('[\W_]+', '', job_dict['txt_str']) + '.jpg'
                 img_path = os.path.join(image_save_path, filename)
                 img_tmp.save(img_path)
