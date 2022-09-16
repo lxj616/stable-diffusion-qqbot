@@ -43,6 +43,14 @@ PROXY_ADDR=socks5://你的代理IP:1080
 
 QQ机器人中目前没有开放自定义参数功能，因为性能实在不够用
 
+## 可选自定制模型
+
+finetune的中国宣传海报模型
+
+https://huggingface.co/lxj616/stable-diffusion-cn-poster
+
+![sample1](https://huggingface.co/lxj616/stable-diffusion-cn-poster/resolve/main/sample1.jpg)
+
 ## bot测试QQ群
 
 暗号是：老铁没毛病
